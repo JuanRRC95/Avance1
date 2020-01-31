@@ -24,7 +24,8 @@ public class Inicio {
             String opc = JOptionPane.showInputDialog("1. ingresar bus \n"
                     + "2. imprimir datos \n"
                     + "3. Buscar registros \n"
-                    + "4. Ordenar por tarifa");
+                    + "4. Ordenar por tarifa \n"
+                    + "0. Salir ");
             int op = Integer.parseInt(opc);
             switch (op) {
                 case 1: captura();
