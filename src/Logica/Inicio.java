@@ -3,10 +3,7 @@ package Logica;
 import java.util.Scanner;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author Juan Rodriguez
- */
+
 public class Inicio {
 
     Logica datos = new Logica();

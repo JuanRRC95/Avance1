@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Logica;
 
 import Clases.Bus;
@@ -10,10 +6,7 @@ import Clases.Carro;
 import Clases.Moto;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author Juan Rodriguez
- */
+
 public class Logica {
 
     private Bus listaBus[] = new Bus[100];
@@ -54,10 +47,8 @@ public class Logica {
         listaMoto[1]= moto2;
         listaMoto[2]= moto3;
         listaMoto[3]= moto4;
-
     }
 
-    //String placa, String Marca, String modelo, String nombreConductor, double cedula, double tarifa, int numeroPasajeros
     public void insertarBus() {
         try {
             String placa = JOptionPane.showInputDialog("Digite la placa del vehiculo");
@@ -78,7 +69,6 @@ public class Logica {
         }
     }
 
-        //String placa, String Marca, String modelo, String nombreConductor, double cedula, double tarifa, int numeroPasajeros
     public void insertarCarro() {
         try {
             String placa = JOptionPane.showInputDialog("Digite la placa del vehiculo");
@@ -97,7 +87,6 @@ public class Logica {
         }
     }
     
-        //String placa, String Marca, String modelo, String nombreConductor, double cedula, double tarifa, int numeroPasajeros
     public void insertarMoto() {
         try {
             String placa = JOptionPane.showInputDialog("Digite la placa del vehiculo");

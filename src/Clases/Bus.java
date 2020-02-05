@@ -5,10 +5,7 @@
  */
 package Clases;
 
-/**
- *
- * @author Juan Rodriguez
- */
+
 public class Bus {
 
     private String placa;

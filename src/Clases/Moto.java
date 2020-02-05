@@ -5,10 +5,6 @@
  */
 package Clases;
 
-/**
- *
- * @author Juan Rodriguez
- */
 public class Moto {
     
     private String placa;
