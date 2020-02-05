@@ -13,7 +13,7 @@ public class Moto {
     
     private String placa;
     private String Marca;
-    private String modelo;
+    private int modelo;
     private String nombreConductor;
     private double cedula;
     private double tarifaMinima;
@@ -22,7 +22,7 @@ public class Moto {
         
     }
     
-    public Moto(String placa, String Marca, String modelo, String nombreConductor, double cedula, double tarifaMinima) {
+    public Moto(String placa, String Marca, int modelo, String nombreConductor, double cedula, double tarifaMinima) {
         this.placa = placa;
         this.Marca = Marca;
         this.modelo = modelo;
@@ -49,14 +49,15 @@ public class Moto {
         this.Marca = Marca;
     }
 
-    public String getModelo() {
+    public int getModelo() {
         return modelo;
     }
 
-    public void setModelo(String modelo) {
+    public void setModelo(int modelo) {
         this.modelo = modelo;
     }
 
+    
     public String getNombreConductor() {
         return nombreConductor;
     }
@@ -79,6 +80,17 @@ public class Moto {
 
     public void setTarifaMinima(double tarifaMinima) {
         this.tarifaMinima = tarifaMinima;
+    }
+
+    @Override
+    public String toString() {
+        return "Datos encontrados : \n"
+                + "Nombre Conductor: " + nombreConductor + "\n"
+                + "Marca :" + Marca + "\n"
+                + "Modelo :" + modelo + "\n"
+                + "Placa :" + placa + "\n"
+                + "Tarifa :" + tarifaMinima + "\n"
+                + "Cedula :" + cedula + "\n";    
     }
     
     

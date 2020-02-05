@@ -10,7 +10,7 @@ package Clases;
  * @author Juan Rodriguez
  */
 public class Bus {
-    
+
     private String placa;
     private String Marca;
     private int modelo;
@@ -18,8 +18,6 @@ public class Bus {
     private double cedula;
     private double tarifa;
     private int numeroPasajeros;
-    
-    
 
     public Bus(String placa, String Marca, int modelo, String nombreConductor, double cedula, double tarifa, int numeroPasajeros) {
         this.placa = placa;
@@ -55,7 +53,6 @@ public class Bus {
         this.modelo = modelo;
     }
 
-    
     public String getNombreConductor() {
         return nombreConductor;
     }
@@ -87,10 +84,16 @@ public class Bus {
     public void setNumeroPasajeros(int numeroPasajeros) {
         this.numeroPasajeros = numeroPasajeros;
     }
-    
-    
-    
-    
-    
-    
+
+    @Override
+    public String toString() {
+        return "Datos encontrados : \n"
+                + "Nombre Conductor: " + nombreConductor + "\n"
+                + "Marca :" + Marca + "\n"
+                + "Modelo :" + modelo + "\n"
+                + "Placa :" + placa + "\n"
+                + "Tarifa :" + tarifa + "\n"
+                + "Numero de Asientos :" + numeroPasajeros + "\n"
+                + "Cedula :" + cedula + "\n";
+    }
 }
