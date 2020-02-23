@@ -1,13 +1,12 @@
-
 package Logica;
 
 import Clases.Bus;
 import Clases.Carro;
+import Clases.MedioTransporte;
 import Clases.Moto;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
-
 
 public class Logica {
 
@@ -36,7 +35,7 @@ public class Logica {
         Carro vehiculo8 = new Carro("pol-456", "Perl", 2009, "Jimena sanc", 9517538, 6500);
         Moto vehiculo9 = new Moto("zxc-458", "Perl", 2006, "Juliana Flor", 9546212, 89500);
         Moto vehiculo10 = new Moto("iju-888", "Audi", 2005, "Armando Vanega", 6325148, 4600);
-        Moto vehiculo11 = new Moto("tfg-898", "Mazda", 2010, "Michael Cardenas", 9546874,7625 );
+        Moto vehiculo11 = new Moto("tfg-898", "Mazda", 2010, "Michael Cardenas", 9546874, 7625);
         Moto vehiculo12 = new Moto("bgv-653", "Suki", 2007, "Julian Vallejo", 6597458, 3200);
         lista.add(vehiculo1);
         lista.add(vehiculo2);
@@ -85,11 +84,11 @@ public class Logica {
             double tarifa = Double.parseDouble(tari);
             Carro carro = new Carro(placa, marca, modelo, nombre, cedula, tarifa);
             agregarCarro(carro);
-        }catch (Exception ex) {
+        } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, "Error ingresando los datos", "Error", 0);
         }
     }
-    
+
     public void insertarMoto() {
         try {
             String placa = JOptionPane.showInputDialog("Digite la placa del vehiculo");
@@ -101,40 +100,48 @@ public class Logica {
             double cedula = Double.parseDouble(ced);
             String tari = JOptionPane.showInputDialog("Digite la tarifa del vehiculo");
             double tarifa = Double.parseDouble(tari);
-            Moto moto = new Moto(placa, marca, modelo, nombre, cedula, tarifa);            
+            Moto moto = new Moto(placa, marca, modelo, nombre, cedula, tarifa);
             agregarMoto(moto);
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, "Error ingresando los datos", "Error", 0);
         }
     }
-    
+
     public void agregarBus(Bus bus) {
-        for (int i = 0; i < listaBus.length; i++) {
-            if (listaBus[i] == null) {
-                listaBus[i] = bus;
-                break;
-            }
-        }
+        /*
+         for (int i = 0; i < listaBus.length; i++) {
+         if (listaBus[i] == null) {
+         listaBus[i] = bus;
+         break;
+         }
+         }
+         */
+        lista.add(bus);
     }
-    
+
     public void agregarCarro(Carro carro) {
-        for (int i = 0; i < listaCarro.length; i++) {
-            if (listaCarro[i] == null) {
-                listaCarro[i] = carro;
-                break;
-            }
-        }
+        /*
+         for (int i = 0; i < listaCarro.length; i++) {
+         if (listaCarro[i] == null) {
+         listaCarro[i] = carro;
+         break;
+         }
+         }
+         */
+        lista.add(carro);
     }
-    
+
     public void agregarMoto(Moto moto) {
-        for (int i = 0; i < listaMoto.length; i++) {
-            if (listaMoto[i] == null) {
-                listaMoto[i] = moto;
-                break;
-            }
-        }
+        /*
+         for (int i = 0; i < listaMoto.length; i++) {
+         if (listaMoto[i] == null) {
+         listaMoto[i] = moto;
+         break;
+         }
+         }
+         */
+        lista.add(moto);
     }
-    
 
     public void imprimirBuses() {
         Bus b;
@@ -162,7 +169,7 @@ public class Logica {
             }
         }
     }
-    
+
     public void imprimirMotos() {
         Moto moto;
         String resultado = "";
@@ -175,29 +182,50 @@ public class Logica {
             }
         }
     }
-    
-    
-    public String buscarConductor(double cedula){
-        for (Bus bus : listaBus) {
-            if (bus != null && cedula == bus.getCedula()) {
-                return bus.toString();
+
+    public String buscarConductor(double cedula) {
+        /*
+         for (Bus bus : listaBus) {
+         if (bus != null && cedula == bus.getCedula()) {
+         return bus.toString();
+         } else {
+         for (Carro carro : listaCarro) {
+         if (carro!=null && cedula == carro.getCedula()) {
+         return carro.toString();
+         } else {
+         for (Moto moto : listaMoto) {
+         if (moto!=null && cedula == moto.getCedula()) {
+         return moto.toString();
+         }
+         }
+         }
+         }
+         }
+         }
+         */
+        for (Object vehiculo : lista) {
+            if (vehiculo instanceof Bus) {
+                if (cedula == ((Bus) vehiculo).getCedula()) {
+                    return vehiculo.toString();
+                }
             } else {
-                for (Carro carro : listaCarro) {
-                    if (carro!=null && cedula == carro.getCedula()) {
-                        return carro.toString();
-                    } else {
-                        for (Moto moto : listaMoto) {
-                            if (moto!=null && cedula == moto.getCedula()) {
-                                return moto.toString();
-                            }
+                if (vehiculo instanceof Carro) {
+                    if (cedula == ((Carro) vehiculo).getCedula()) {
+                        return vehiculo.toString();
+                    }
+                } else {
+                    if (vehiculo instanceof Moto) {
+                        if (cedula == ((Moto) vehiculo).getCedula()) {
+                            return vehiculo.toString();
                         }
                     }
                 }
             }
+
         }
         return "El registro no existe";
     }
-    
+
     public void ordenamientoAscendenteTarifa() {
         int i, j;
         Bus b1, b2, aux;
@@ -218,7 +246,7 @@ public class Logica {
 
     public void ordenamientoDescendenteTarifa() {
         int i, j;
-        Moto b1, b2 , aux;
+        Moto b1, b2, aux;
         for (i = 0; i < listaMoto.length - 1; i++) {
             for (j = 0; j < listaMoto.length - i - 1; j++) {
                 if ((listaMoto[i] != null) && (listaMoto[j] != null)) {
@@ -271,8 +299,7 @@ public class Logica {
             }
         }
     }
-    
-    
+
     public void limpiarConsola() {
         for (int i = 0; i < 100; i++) {
             System.out.println();
