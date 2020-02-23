@@ -6,72 +6,13 @@
 package Clases;
 
 
-public class Bus {
+public class Bus extends MedioTransporte{
 
-    private String placa;
-    private String Marca;
-    private int modelo;
-    private String nombreConductor;
-    private double cedula;
-    private double tarifa;
     private int numeroPasajeros;
-
-    public Bus(String placa, String Marca, int modelo, String nombreConductor, double cedula, double tarifa, int numeroPasajeros) {
-        this.placa = placa;
-        this.Marca = Marca;
-        this.modelo = modelo;
-        this.nombreConductor = nombreConductor;
-        this.cedula = cedula;
-        this.tarifa = tarifa;
-        this.numeroPasajeros = numeroPasajeros;
-    }
-
-    public String getPlaca() {
-        return placa;
-    }
-
-    public void setPlaca(String placa) {
-        this.placa = placa;
-    }
-
-    public String getMarca() {
-        return Marca;
-    }
-
-    public void setMarca(String Marca) {
-        this.Marca = Marca;
-    }
-
-    public int getModelo() {
-        return modelo;
-    }
-
-    public void setModelo(int modelo) {
-        this.modelo = modelo;
-    }
-
-    public String getNombreConductor() {
-        return nombreConductor;
-    }
-
-    public void setNombreConductor(String nombreConductor) {
-        this.nombreConductor = nombreConductor;
-    }
-
-    public double getCedula() {
-        return cedula;
-    }
-
-    public void setCedula(double cedula) {
-        this.cedula = cedula;
-    }
-
-    public double getTarifa() {
-        return tarifa;
-    }
-
-    public void setTarifa(double tarifa) {
-        this.tarifa = tarifa;
+    
+    public Bus(String placa, String Marca, int modelo, String nombreConductor, double cedula, double tarifaMinima,int numeroPasajeros) {
+        super(placa, Marca, modelo, nombreConductor, cedula, tarifaMinima);
+        this.numeroPasajeros=numeroPasajeros;
     }
 
     public int getNumeroPasajeros() {
@@ -84,13 +25,13 @@ public class Bus {
 
     @Override
     public String toString() {
-        return "Datos encontrados : \n"
-                + "Nombre Conductor: " + nombreConductor + "\n"
-                + "Marca :" + Marca + "\n"
-                + "Modelo :" + modelo + "\n"
-                + "Placa :" + placa + "\n"
-                + "Tarifa :" + tarifa + "\n"
-                + "Numero de Asientos :" + numeroPasajeros + "\n"
-                + "Cedula :" + cedula + "\n";
+        return super.toString()+ "Numero de Pasajeros :" + numeroPasajeros + "\n"; //To change body of generated methods, choose Tools | Templates.
     }
+
+    
+    
+    
+
+    
+    
 }

@@ -6,88 +6,17 @@
 package Clases;
 
 
-public class Carro {
-    
-    private String placa;
-    private String Marca;
-    private int modelo;
-    private String nombreConductor;
-    private double cedula;
-    private double tarifaMinima;
+public class Carro extends MedioTransporte {
 
     public Carro(String placa, String Marca, int modelo, String nombreConductor, double cedula, double tarifaMinima) {
-        this.placa = placa;
-        this.Marca = Marca;
-        this.modelo = modelo;
-        this.nombreConductor = nombreConductor;
-        this.cedula = cedula;
-        this.tarifaMinima = tarifaMinima;
-    }
-    
-    public Carro(){
-        
-    }
-
-    public String getPlaca() {
-        return placa;
-    }
-
-    public void setPlaca(String placa) {
-        this.placa = placa;
-    }
-
-    public String getMarca() {
-        return Marca;
-    }
-
-    public void setMarca(String Marca) {
-        this.Marca = Marca;
-    }
-
-    public int getModelo() {
-        return modelo;
-    }
-
-    public void setModelo(int modelo) {
-        this.modelo = modelo;
-    }
-    
-    
-    public String getNombreConductor() {
-        return nombreConductor;
-    }
-
-    public void setNombreConductor(String nombreConductor) {
-        this.nombreConductor = nombreConductor;
-    }
-
-    public double getCedula() {
-        return cedula;
-    }
-
-    public void setCedula(double cedula) {
-        this.cedula = cedula;
-    }
-
-    public double getTarifaMinima() {
-        return tarifaMinima;
-    }
-
-    public void setTarifaMinima(double tarifaMinima) {
-        this.tarifaMinima = tarifaMinima;
+        super(placa, Marca, modelo, nombreConductor, cedula, tarifaMinima);
     }
 
     @Override
     public String toString() {
-        return "Datos encontrados : \n"
-                + "Nombre Conductor: " + nombreConductor + "\n"
-                + "Marca :" + Marca + "\n"
-                + "Modelo :" + modelo + "\n"
-                + "Placa :" + placa + "\n"
-                + "Tarifa :" + tarifaMinima + "\n"
-                + "Cedula :" + cedula + "\n";
+        return super.toString(); //To change body of generated methods, choose Tools | Templates.
     }
     
     
-    
+
 }
