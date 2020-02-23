@@ -108,101 +108,57 @@ public class Logica {
     }
 
     public void agregarBus(Bus bus) {
-        /*
-         for (int i = 0; i < listaBus.length; i++) {
-         if (listaBus[i] == null) {
-         listaBus[i] = bus;
-         break;
-         }
-         }
-         */
         lista.add(bus);
     }
 
     public void agregarCarro(Carro carro) {
-        /*
-         for (int i = 0; i < listaCarro.length; i++) {
-         if (listaCarro[i] == null) {
-         listaCarro[i] = carro;
-         break;
-         }
-         }
-         */
         lista.add(carro);
     }
 
     public void agregarMoto(Moto moto) {
-        /*
-         for (int i = 0; i < listaMoto.length; i++) {
-         if (listaMoto[i] == null) {
-         listaMoto[i] = moto;
-         break;
-         }
-         }
-         */
         lista.add(moto);
     }
 
     public void imprimirBuses() {
-        Bus b;
-        String resultado = "";
+        Bus bus;
         limpiarConsola();
-        System.out.println(" PLACA | MARCA | MODELO | TARIFA | NOMBRE CONDUCTOR |     CEDULA      | NUMERO PASAJEROS");
-        for (Object elemento : listaBus) {
-            if (elemento != null) {
-                b = ((Bus) elemento);
-                System.out.println(b.getPlaca() + "   " + b.getMarca() + "   " + b.getModelo() + "   " + String.valueOf(b.getTarifaMinima()) + "      "
-                        + b.getNombreConductor() + "       " + b.getCedula() + "         " + b.getNumeroPasajeros());
+        System.out.println(" PLACA | MARCA | MODELO | TARIFA | NOMBRE CONDUCTOR |       CEDULA       |      Numero de Pasajero ");
+        for (Object vehiculo : lista) {
+            if(vehiculo instanceof Bus){
+                bus=((Bus)vehiculo);
+                System.out.println(bus.getPlaca() + "   " + bus.getMarca() + "   " + bus.getModelo() + "   " + String.valueOf(bus.getTarifaMinima()) + "      "
+                + bus.getNombreConductor() + "       " + bus.getCedula() + "         " + bus.getNumeroPasajeros());        
             }
         }
     }
 
     public void imprimirCarros() {
         Carro carro;
-        String resultado = "";
         limpiarConsola();
         System.out.println(" PLACA | MARCA | MODELO | TARIFA | NOMBRE CONDUCTOR |       CEDULA       |");
-        for (Carro elemento : listaCarro) {
-            if (elemento != null) {
-                System.out.println(elemento.getPlaca() + "   " + elemento.getMarca() + "   " + elemento.getModelo() + "   " + String.valueOf(elemento.getTarifaMinima()) + "      "
-                        + elemento.getNombreConductor() + "       " + elemento.getCedula() + "         ");
+        for (Object vehiculo : lista) {
+            if(vehiculo instanceof Carro){
+                carro=((Carro)vehiculo);
+                System.out.println(carro.getPlaca() + "   " + carro.getMarca() + "   " + carro.getModelo() + "   " + String.valueOf(carro.getTarifaMinima()) + "      "
+                + carro.getNombreConductor() + "       " + carro.getCedula() + "         ");        
             }
         }
     }
 
     public void imprimirMotos() {
         Moto moto;
-        String resultado = "";
         limpiarConsola();
         System.out.println(" PLACA | MARCA | MODELO | TARIFA | NOMBRE CONDUCTOR |     CEDULA      |");
-        for (Moto elemento : listaMoto) {
-            if (elemento != null) {
-                System.out.println(elemento.getPlaca() + "   " + elemento.getMarca() + "   " + elemento.getModelo() + "   " + String.valueOf(elemento.getTarifaMinima()) + "      "
-                        + elemento.getNombreConductor() + "       " + elemento.getCedula() + "");
+        for (Object vehiculo : lista) {
+            if (vehiculo instanceof Moto) {
+                moto=((Moto)vehiculo);
+                System.out.println(moto.getPlaca() + "   " + moto.getMarca() + "   " + moto.getModelo() + "   " + String.valueOf(moto.getTarifaMinima()) + "      "
+                        + moto.getNombreConductor() + "       " + moto.getCedula() + "");
             }
         }
     }
 
     public String buscarConductor(double cedula) {
-        /*
-         for (Bus bus : listaBus) {
-         if (bus != null && cedula == bus.getCedula()) {
-         return bus.toString();
-         } else {
-         for (Carro carro : listaCarro) {
-         if (carro!=null && cedula == carro.getCedula()) {
-         return carro.toString();
-         } else {
-         for (Moto moto : listaMoto) {
-         if (moto!=null && cedula == moto.getCedula()) {
-         return moto.toString();
-         }
-         }
-         }
-         }
-         }
-         }
-         */
         for (Object vehiculo : lista) {
             if (vehiculo instanceof Bus) {
                 if (cedula == ((Bus) vehiculo).getCedula()) {
@@ -221,84 +177,33 @@ public class Logica {
                     }
                 }
             }
-
         }
         return "El registro no existe";
     }
 
-    public void ordenamientoAscendenteTarifa() {
-        int i, j;
-        Bus b1, b2, aux;
-        for (i = 0; i < listaBus.length - 1; i++) {
-            for (j = 0; j < listaBus.length - i - 1; j++) {
-                b1 = ((Bus) listaBus[j]);
-                b2 = ((Bus) listaBus[j + 1]);
-                if (b1 != null && b2 != null) {
-                    if (b2.getTarifaMinima() < b1.getTarifaMinima()) {
-                        aux = listaBus[j + 1];
-                        listaBus[j + 1] = listaBus[j];
-                        listaBus[j] = aux;
-                    }
+    public void eliminarRegistro(double cedula){        
+        for (Object vehiculo : lista) {
+            if(vehiculo instanceof Bus){
+                if(cedula == ((Bus)vehiculo).getCedula()){
+                    lista.remove(vehiculo);
                 }
-            }
-        }
-    }
-
-    public void ordenamientoDescendenteTarifa() {
-        int i, j;
-        Moto b1, b2, aux;
-        for (i = 0; i < listaMoto.length - 1; i++) {
-            for (j = 0; j < listaMoto.length - i - 1; j++) {
-                if ((listaMoto[i] != null) && (listaMoto[j] != null)) {
-                    b1 = ((Moto) listaMoto[j]);
-                    b2 = ((Moto) listaMoto[j + 1]);
-                    if (b1 != null && b2 != null) {
-                        if (b2.getTarifaMinima() > b1.getTarifaMinima()) {
-                            aux = listaMoto[j + 1];
-                            listaMoto[j + 1] = listaMoto[j];
-                            listaMoto[j] = aux;
+            }else{
+                if(vehiculo instanceof Carro){
+                    if(cedula==((Carro)vehiculo).getCedula()){
+                        lista.remove(vehiculo);
+                    }
+                }else{
+                    if(vehiculo instanceof Moto){
+                        if(cedula == ((Moto)vehiculo).getCedula()){
+                            lista.remove(vehiculo);
                         }
                     }
                 }
             }
-        }
+        }       
     }
-
-    public void ordenamientoAscendenteCedula() {
-        int i, j;
-        Carro b1, b2, aux;
-        for (i = 0; i < listaCarro.length - 1; i++) {
-            for (j = 0; j < listaCarro.length - i - 1; j++) {
-                b1 = ((Carro) listaCarro[j]);
-                b2 = ((Carro) listaCarro[j + 1]);
-                if (b1 != null && b2 != null) {
-                    if (b2.getCedula() < b1.getCedula()) {
-                        aux = listaCarro[j + 1];
-                        listaCarro[j + 1] = listaCarro[j];
-                        listaCarro[j] = aux;
-                    }
-                }
-            }
-        }
-    }
-
-    public void ordenamientoDescendenteCedula() {
-        int i, j;
-        Carro b1, b2, aux;
-        for (i = 0; i < listaCarro.length - 1; i++) {
-            for (j = 0; j < listaCarro.length - i - 1; j++) {
-                b1 = ((Carro) listaCarro[j]);
-                b2 = ((Carro) listaCarro[j + 1]);
-                if (b1 != null && b2 != null) {
-                    if (b2.getCedula() > b1.getCedula()) {
-                        aux = listaCarro[j + 1];
-                        listaCarro[j + 1] = listaCarro[j];
-                        listaCarro[j] = aux;
-                    }
-                }
-            }
-        }
-    }
+    
+    
 
     public void limpiarConsola() {
         for (int i = 0; i < 100; i++) {
