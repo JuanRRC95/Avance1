@@ -47,6 +47,7 @@ public class Inicio {
         JOptionPane.showMessageDialog(null,datos.buscarConductor(cedula));
     }
 
+    /*
     public void ordenarBuses() {
         datos.ordenamientoAscendenteTarifa();
         datos.imprimirBuses();
@@ -62,7 +63,7 @@ public class Inicio {
         datos.imprimirMotos();
         
     }
-
+*/
     public String impresionMenuPrincipal() {
         String opc = JOptionPane.showInputDialog("1. ingresar Vehiculo \n"
                 + "2. imprimir datos \n"
@@ -171,11 +172,11 @@ public class Inicio {
             try {
                 int op = Integer.parseInt(impresionMenuDatos());
                 switch (op) {
-                    case 1: ordenarCarros();
+                    case 1: //ordenarCarros();
                             break;
-                    case 2: ordenarBuses();
+                    case 2: //ordenarBuses();
                             break;
-                    case 3: ordenarMotos();
+                    case 3: //ordenarMotos();
                             break;
                     case 0: bandera = false;
                             break;

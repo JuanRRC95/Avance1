@@ -5,6 +5,7 @@
  */
 package Clases;
 
+import Logica.Logica;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import java.io.BufferedWriter;
@@ -37,6 +38,29 @@ public class Ficheros {
             }
             bw.close();
         } catch (IOException ex) {
+            
+        }
+    }
+    
+    
+    public void añadirRegistro(Object registro){
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        Logica logica = new Logica();
+        try{
+            File archivo = new File(ruta);
+            BufferedWriter bw;
+            if(archivo.exists()){
+                bw = new BufferedWriter(new FileWriter(archivo));
+                
+                
+            }else{
+                bw = new BufferedWriter(new FileWriter(archivo));
+                
+                
+            }
+            bw.close();           
+        }catch(IOException ex){
+            
             
         }
     }

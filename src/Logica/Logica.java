@@ -24,6 +24,16 @@ public class Logica {
         "Perl"
     };
 
+    public List<Object> getLista() {
+        return lista;
+    }
+
+    public void setLista(List<Object> lista) {
+        this.lista = lista;
+    }
+
+    
+    
     public void cargarDatos() {
         Bus vehiculo1 = new Bus("abc-123", "Mazd", 2005, "Jose Cuervo", 1074188, 5000, 20);
         Bus vehiculo2 = new Bus("qwe-346", "Susu", 2004, "Juan Rodrig", 1005888, 4500, 15);
