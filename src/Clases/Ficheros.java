@@ -43,15 +43,18 @@ public class Ficheros {
      * }
      * }
      */
-    public void añadirRegistroBus() {
+    public void añadirRegistroBus(Bus bus) {
+        List<Bus>lista = new ArrayList<>();
+        lista=leerFicheroBuses();
+        lista.add(bus);
+        crearJson(lista,"ficheroBuses");
+    }
+
+    public void añadirRegistroCarro(Carro carro) {
 
     }
 
-    public void añadirRegistroCarro() {
-
-    }
-
-    public void añadirRegistroMoto() {
+    public void añadirRegistroMoto(Moto moto) {
 
     }
 
@@ -63,55 +66,79 @@ public class Ficheros {
      * FileWriter(archivo)); bw.write("Acabo de crear el fichero de texto."); }
      * bw.close();
      */
-
-    public String crearJson(Object objeto) {
-        Gson gson = new GsonBuilder().setPrettyPrinting().create();
-        String jsonEjemplo = gson.toJson(objeto);
-        return jsonEjemplo;
-    }
-
-    public void leerFicheroBuses() {
-        try {
-            String linea = br.readLine();
-            while (linea != null) {
-                Gson gson = new Gson();
-                Persona ejemplo = gson.fromJson(linea, Persona.class);
-                System.out.println(ejemplo.getNombre());
-                linea = br.readLine();
-            }
-        } catch (Exception ex) {
-
-        }
-    }
-
-    
-    public void leerFicheroCarros() {
-        try {
-            String linea = br.readLine();
-            while (linea != null) {
-                Gson gson = new Gson();
-                Persona ejemplo = gson.fromJson(linea, Persona.class);
-                System.out.println(ejemplo.getNombre());
-                linea = br.readLine();
-            }
-        } catch (Exception ex) {
-
+    public void crearJsonBus(List<Bus> lista,String nombreFichero) {
+        for (Object obj : lista) {
+            Gson gson = new GsonBuilder().setPrettyPrinting().create();
+            String jsonEjemplo = gson.toJson(obj);
+            escribirFichero(jsonEjemplo, jsonEjemplo);
         }
     }
     
+    public void crearJsonCarro(List<Carro> lista,String nombreFichero) {
+        for (Object obj : lista) {
+            Gson gson = new GsonBuilder().setPrettyPrinting().create();
+            String jsonEjemplo = gson.toJson(obj);
+            escribirFichero(jsonEjemplo, jsonEjemplo);
+        }
+    }
     
-    public void leerFicheroMotos() {
+    public void crearJsonMoto(List<Moto> lista,String nombreFichero) {
+        for (Object obj : lista) {
+            Gson gson = new GsonBuilder().setPrettyPrinting().create();
+            String jsonEjemplo = gson.toJson(obj);
+            escribirFichero(jsonEjemplo, jsonEjemplo);
+        }
+    }
+
+    public List<Bus> leerFicheroBuses() {
+        List<Bus> listaBuses = new ArrayList<>();
         try {
+            br = new BufferedReader(new FileReader("ficheroBuses.ddr"));
             String linea = br.readLine();
             while (linea != null) {
                 Gson gson = new Gson();
-                Persona ejemplo = gson.fromJson(linea, Persona.class);
-                System.out.println(ejemplo.getNombre());
+                Bus bus = gson.fromJson(linea, Bus.class);
+                listaBuses.add(bus);
                 linea = br.readLine();
             }
         } catch (Exception ex) {
-
+            System.out.println(ex.getMessage());
         }
+        return listaBuses;
+    }
+
+    public List<Carro> leerFicheroCarros() {
+        List<Carro> listaCarros = new ArrayList<>();
+        try {
+            br = new BufferedReader(new FileReader("ficheroCarros.ddr"));
+            String linea = br.readLine();
+            while (linea != null) {
+                Gson gson = new Gson();
+                Carro carro = gson.fromJson(linea, Carro.class);
+                listaCarros.add(carro);
+                linea = br.readLine();
+            }
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+        return listaCarros;
+    }
+
+    public List<Moto> leerFicheroMotos() {
+        List<Moto> listaMotos = new ArrayList<>();
+        try {
+            br = new BufferedReader(new FileReader("ficheroMotos.ddr"));
+            String linea = br.readLine();
+            while (linea != null) {
+                Gson gson = new Gson();
+                Moto moto = gson.fromJson(linea, Moto.class);
+                listaMotos.add(moto);
+                linea = br.readLine();
+            }
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+        return listaMotos;
     }
     /*
      public Object retorna(String registro){
@@ -120,16 +147,15 @@ public class Ficheros {
         
      }
      */
-    public void escribirFichero() {
-        br = new BufferedReader(new FileReader("fichero1.ddr"));
-        bw = new BufferedWriter(new FileWriter("fichero1.ddr"));
+
+    public void escribirFichero(String json,String nombreFichero) {        
         try {
-            escribeFichero(bw);
-            //Guardamos los cambios del fichero
+            bw = new BufferedWriter(new FileWriter(nombreFichero));
+            bw.write(json.replace("\n",""));
+            bw.newLine();
             bw.flush();
-            leeFichero(br);
         } catch (IOException e) {
-            System.out.println("Error E/S: " + e);
+            System.out.println("Error E/S: " + e.getMessage());
         }
 
     }
