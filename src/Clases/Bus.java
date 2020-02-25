@@ -10,9 +10,10 @@ public class Bus extends MedioTransporte{
 
     private int numeroPasajeros;
     
-    public Bus(String placa, String Marca, int modelo, String nombreConductor, double cedula, double tarifaMinima,int numeroPasajeros) {
-        super(placa, Marca, modelo, nombreConductor, cedula, tarifaMinima);
+    public Bus(String placa, String Marca, int modelo, String nombreConductor, double cedula, double tarifaMinima,int numeroPasajeros,String tipo) {
+        super(placa, Marca, modelo, nombreConductor, cedula, tarifaMinima,tipo);
         this.numeroPasajeros=numeroPasajeros;
+        tipo="Bus";
     }
 
     public int getNumeroPasajeros() {

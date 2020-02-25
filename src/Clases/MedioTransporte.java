@@ -14,19 +14,31 @@ public abstract class MedioTransporte {
     private String placa;
     private String Marca;
     private int modelo;
+    private String tipo;
     private String nombreConductor;
     private double cedula;
     private double tarifaMinima;
     
-    public MedioTransporte(String placa, String Marca, int modelo, String nombreConductor, double cedula, double tarifaMinima) {
+    public MedioTransporte(String placa, String Marca, int modelo, String nombreConductor, double cedula, double tarifaMinima,String tipo) {
         this.placa = placa;
         this.Marca = Marca;
         this.modelo = modelo;
         this.nombreConductor = nombreConductor;
         this.cedula = cedula;
         this.tarifaMinima = tarifaMinima;
+        this.tipo=tipo;
     }
 
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+
+    
+    
     public String getPlaca() {
         return placa;
     }

@@ -7,8 +7,9 @@ package Clases;
 
 public class Moto extends MedioTransporte {
 
-    public Moto(String placa, String Marca, int modelo, String nombreConductor, double cedula, double tarifaMinima) {
-        super(placa, Marca, modelo, nombreConductor, cedula, tarifaMinima);
+    public Moto(String placa, String Marca, int modelo, String nombreConductor, double cedula, double tarifaMinima,String tipo) {
+        super(placa, Marca, modelo, nombreConductor, cedula, tarifaMinima,tipo);
+        tipo="Moto";
     }
 
     @Override
