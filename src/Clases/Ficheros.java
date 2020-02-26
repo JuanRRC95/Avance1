@@ -47,7 +47,7 @@ public class Ficheros {
         List<Bus>lista = new ArrayList<>();
         lista=leerFicheroBuses();
         lista.add(bus);
-        crearJson(lista,"ficheroBuses");
+        crearJsonBus(lista,"ficheroBuses");
     }
 
     public void añadirRegistroCarro(Carro carro) {
@@ -70,7 +70,7 @@ public class Ficheros {
         for (Object obj : lista) {
             Gson gson = new GsonBuilder().setPrettyPrinting().create();
             String jsonEjemplo = gson.toJson(obj);
-            escribirFichero(jsonEjemplo, jsonEjemplo);
+            escribirFichero(jsonEjemplo, nombreFichero);
         }
     }
     
